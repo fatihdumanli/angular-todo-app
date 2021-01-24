@@ -1,5 +1,6 @@
 import { TodoService } from './../todo.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { TodoCategory } from '../todocategory';
 
 @Component({
   selector: 'todo-item',
@@ -32,7 +33,7 @@ export class TodoItemComponent implements OnInit {
   id: number = 0;
   title: string = "";
   @Input('category')
-  category: string = "";
+  category: TodoCategory | undefined;
   @Input('isCompleted')
   isCompleted: boolean = false;
 

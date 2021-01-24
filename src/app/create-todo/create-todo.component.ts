@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../todo.service';
 import { FormControl } from '@angular/forms'
 import { Todo } from '../todo';
+import { TodoCategory } from '../todocategory';
 
 @Component({
   selector: 'create-todo',
@@ -54,13 +55,15 @@ import { Todo } from '../todo';
         <button class="btn btn-danger" (click)="toggleState()" style="float: left;">Cancel</button>
         <button class="btn btn-success" (click)="saveTodo(f.value)" [disabled]="!f.valid" style="float: right;">Save</button>
     </form>
+
+    {{ todoCategories | json }}
   `,
   styleUrls: ['./create-todo.component.css'],
 })
 export class CreateTodoComponent implements OnInit {
 
   isCreating: boolean = false;
-  todoCategories: string[] = [""];
+  todoCategories: TodoCategory[] | undefined;
 
   constructor(
     private todoService: TodoService
@@ -75,6 +78,11 @@ export class CreateTodoComponent implements OnInit {
   }
 
   saveTodo(todoForm : any) {
-      console.log(todoForm);
+      let todoItem = new Todo();
+      todoItem.title = todoForm.todoTitle;
+      todoItem.category = new TodoCategory();
+      todoItem.category.id = todoForm.category;
+
+      this.todoService.addTodo(todoItem);
   }
 }

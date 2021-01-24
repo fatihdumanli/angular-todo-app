@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Todo } from './todo';
+import { TodoCategory } from './todocategory';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +12,28 @@ export class TodoService {
       id: 1,
       title: 'Invite Jimmy to the Prague trip',
       isCompleted: false,
-      category: 'Travel'
+      category: {
+        id: 1,
+        name: "Travel"
+      }
     },
     {
       id: 2,
       title: 'Buy a bread',
       isCompleted: true,
-      category: 'Shopping'
+      category: {
+        id: 2,
+        name: "Shopping"
+      }
     },
     {
       id: 3,
       title: 'Meet Jane to discuss the offer',
       isCompleted: false,
-      category: 'Business'
+      category: {
+        id: 3,
+        name: "Business"
+      }
     }
   ];
 
@@ -37,13 +47,29 @@ export class TodoService {
       return this.todos;
   }
 
-  getTodoCategories(): string[] {
+  getTodoCategories(): TodoCategory[] {
       return [
-        "Shopping",
-        "Travel",
-        "Business",
-        "General",
-        "Hobbies"
+        {
+          id: 2,
+          name: "Shopping"
+        },
+        {
+          id: 1,
+          name: "Travel"
+        },
+        {
+          id: 3,
+          name: "Business"
+        },
+        {
+          id: 4,
+          name: "General"
+        },
+        {
+
+          id: 5,
+          name: "Hobbies"
+        }
       ];
   }
 

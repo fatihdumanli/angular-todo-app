@@ -74,6 +74,9 @@ export class TodoService {
   }
 
   addTodo(todo: Todo) {
+    console.log(todo);
+    let category = this.getTodoCategories().filter(c => c.id.toString() === todo.category.id.toString());
+    todo.category.name = category[0].name;
     this.todos.push(todo);
   }
 }

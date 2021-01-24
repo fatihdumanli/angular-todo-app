@@ -44,7 +44,7 @@ import { TodoCategory } from '../todocategory';
                   #todoCategory="ngModel"
                   class="form-control">
                 <option value="-1"></option>
-                <option *ngFor="let category of todoCategories; index as i" value="{{i}}">{{category}}</option>
+                <option *ngFor="let category of todoCategories; index as i" value="{{category.id}}">{{category.name}}</option>
             </select>
 
             <div *ngIf="!todoCategory.valid && todoCategory.touched">
@@ -56,7 +56,6 @@ import { TodoCategory } from '../todocategory';
         <button class="btn btn-success" (click)="saveTodo(f.value)" [disabled]="!f.valid" style="float: right;">Save</button>
     </form>
 
-    {{ todoCategories | json }}
   `,
   styleUrls: ['./create-todo.component.css'],
 })
@@ -81,8 +80,9 @@ export class CreateTodoComponent implements OnInit {
       let todoItem = new Todo();
       todoItem.title = todoForm.todoTitle;
       todoItem.category = new TodoCategory();
-      todoItem.category.id = todoForm.category;
+      todoItem.category.id = todoForm.todoCategory;
 
       this.todoService.addTodo(todoItem);
+      this.toggleState();
   }
 }

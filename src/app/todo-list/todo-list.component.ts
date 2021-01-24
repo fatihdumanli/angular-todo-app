@@ -8,7 +8,7 @@ import { TodoItemComponent } from '../todo-item/todo-item.component';
   template: `
     <h1>Todos</h1>
     <div class="todo-list" *ngFor="let todo of todos">
-        <todo-item [id]="todo.id" [category]="todo.category" [isCompleted]="todo.isCompleted">
+        <todo-item [id]="todo.id" [category]="todo.category.name" [isCompleted]="todo.isCompleted">
           {{ todo.title }}
         </todo-item>
     </div>

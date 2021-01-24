@@ -42,6 +42,7 @@ import { TodoCategory } from '../todocategory';
                   required
                   ngModel
                   #todoCategory="ngModel"
+                  (keyup.enter)="saveTodo(f.value)"
                   class="form-control">
                 <option value="-1"></option>
                 <option *ngFor="let category of todoCategories; index as i" value="{{category.id}}">{{category.name}}</option>

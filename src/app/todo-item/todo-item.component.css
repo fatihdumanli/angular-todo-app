@@ -1,0 +1,17 @@
+.todo-container {
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.todo-heading {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.todo-container.completed {
+    background: rgb(180, 223, 152);
+}
+
+.todo-tools {
+  float: right;
+}
